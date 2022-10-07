@@ -11,7 +11,7 @@ function App() {
   ]
   return (
     <div className="App">
-      {personas.map((persona)=>(<PersonCard firstName={persona.firstName} lastName={persona.lastName} age={persona.age} hairColor={persona.hairColor}/> ))}
+      {personas.map((persona,index)=>(<PersonCard key={index} firstName={persona.firstName} lastName={persona.lastName} age={persona.age} hairColor={persona.hairColor}/> ))}
     </div>
   );
 }

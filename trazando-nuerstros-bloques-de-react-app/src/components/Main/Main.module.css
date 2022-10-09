@@ -1,0 +1,9 @@
+.container{
+    background-color: #e06666;
+    width: 80vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}

@@ -22,3 +22,8 @@ function tossCoin() {
         }
     
     });
+
+fiveHeadsSync
+    .then( res => console.log(res))
+    .catch( err =>console.log (err)); 
+    

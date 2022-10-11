@@ -1,29 +1,33 @@
+import axios from 'axios';
 import React, { useEffect , useState} from 'react';
 
 const PokemonApi = () => {
 
     const [pokemons, setPokemons] = useState([]);
     const [hayPokemons, setHaypokemons] = useState(false);
-    const [limit, setLimit] = useState(10)
+    //const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`)
-            .then(response => response.json())
-            .then(response => setPokemons(response.results))
-    }, [limit]);
+        getPokemons()
+    }, []);
     
-    
+    const getPokemons = async () =>{
+        try {
+            const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=807`);
+            setPokemons(res.data.results);
+    //       setLoading(true);
+        } catch (error) {
+            alert(error.message);
+        }
+    }
     const fetchPokemons = () =>{
-        let addLimit = limit + 10
-        console.log('fetch pokemons')
-        setLimit(addLimit)
         setHaypokemons(true)
-        console.log(addLimit)
     }
 
     return (
         <div>
             <button onClick={ fetchPokemons } >fetch pokemon</button>
+            
             {hayPokemons ? pokemons.map((pokemon, index) => {
                 return (<div key={index}> {index+1}.-{pokemon.name} </div>)
             }):''
